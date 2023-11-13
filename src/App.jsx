@@ -1,35 +1,22 @@
-import './app.scss';
-import Contact from './components/contact/Contact';
-import Cusror from './components/cusror/Cusror';
-import Hero from './components/hero/Hero';
-import Navbar from './components/navbar/navbar';
-import Parallax from './components/parallax/Parallax';
-import Portfolio from './components/portfolio/Portfolio';
-import Services from './components/services/Services';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import About from './pages/about';
+import Contact from './pages/contact';
+import Home from './pages/home';
+import Projects from './pages/projects';
 
-const App = () => {
+export default function App() {
 	return (
-		<div>
-			<Cusror />
-			<section id='Home'>
+		<main className='h-full bg-slate-300/20'>
+			<Router>
 				<Navbar />
-				<Hero />
-			</section>
-			<section id='Services'>
-				<Parallax type='services' />
-			</section>
-			<section>
-				<Services />
-			</section>
-			<section id='Portfolio'>
-				<Parallax type='portfolio' />
-			</section>
-			<Portfolio />
-			<section id='Contact'>
-				<Contact />
-			</section>
-		</div>
+				<Routes>
+					<Route path='/' element={<Home />} />
+					<Route path='/about' element={<About />} />
+					<Route path='/projects' element={<Projects />} />
+					<Route path='/contact' element={<Contact />} />
+				</Routes>
+			</Router>
+		</main>
 	);
-};
-
-export default App;
+}
